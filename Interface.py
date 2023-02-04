@@ -35,22 +35,23 @@ while True:
 
     evento, valores = janela.read()
 
+    ve1 = float(valores['nota_ve1'])
+    ve2 = float(valores['nota_ve2'])
+    vc = float(valores['nota_vc'])
+    vf = float(valores['nota_vf'])
+
+    # AÇÃO DETERMINADA POR FECHAR A JANELA
     if evento == sg.WIN_CLOSED:
         break
 
+    # AÇÃO DETERMINADA POR APERTAR O BOTAO DE CALCULAR MÉDIA
     if evento == 'Calcular Minha Média':
-        ve1 = float(valores['nota_ve1'])
-        ve2 = float(valores['nota_ve2'])
-        vc = float(valores['nota_vc'])
-        vf = float(valores['nota_vf'])
         sem1 = NotasIME(ve1, ve2, vc, vf)
         jan_saida = janela['saida_final']
         jan_saida.update(f"Sua média é {sem1.media_final()}.")
 
+    # AÇÃO DETERMINADA POR APERTAR O BOTAO DE QUANTO PRECISA NA ULTIMA PROVA
     if evento == "Quanto Preciso na VF":
-        ve1 = float(valores['nota_ve1'])
-        ve2 = float(valores['nota_ve2'])
-        vc = float(valores['nota_vc'])
         sem1 = NotasIME(ve1, ve2, vc, 0)
         jan_saida = janela['saida_final']
         jan_saida.update(
